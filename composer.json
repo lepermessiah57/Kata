@@ -1,0 +1,19 @@
+{
+    "name": "lepermessiah57/kata",
+    "description": "template for TDD katas",
+    "require-dev": {
+        "phpunit/phpunit": "dev-master",
+        "phake/phake": "dev-master"
+    },
+    "license": "BSD",
+    "authors": [
+        {
+            "name": "Matt.Hill",
+            "email": "lepermessiah57@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+
+    }
+}
