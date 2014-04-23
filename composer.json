@@ -15,5 +15,10 @@
     "minimum-stability": "dev",
     "require": {
 
+    },
+    "autoload": {
+	"psr-0": {
+	    "Kata": ["src/Kata","test/Kata"]
+	}
     }
 }
