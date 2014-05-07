@@ -2,7 +2,7 @@
     "name": "lepermessiah57/kata",
     "description": "template for TDD katas",
     "require-dev": {
-        "phpunit/phpunit": "dev-master",
+        "phpunit/phpunit": "3.7.*",
         "phake/phake": "dev-master"
     },
     "license": "BSD",
@@ -18,7 +18,7 @@
     },
     "autoload": {
 	"psr-0": {
-	    "Kata": ["src/Kata","test/Kata"]
+	    "Kata": ["src/","test/"]
 	}
     }
 }
