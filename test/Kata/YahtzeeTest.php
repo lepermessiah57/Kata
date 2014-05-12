@@ -16,7 +16,7 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase {
 
         $actual = $this->yahtzee->score($dice);
 
-        $this->assertScoresYahtzee($actual);
+        $this->assertScore(50, $actual, 'yahtzee');
     }
 
     public function testScoreWithAllTwosScoresYahtzee(){
@@ -24,7 +24,7 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase {
 
         $actual = $this->yahtzee->score($dice);
 
-        $this->assertScoresYahtzee($actual);
+        $this->assertScore(50, $actual, 'yahtzee');
     }
 
     public function testScoreWithAllThreesScoresYahtzee(){
@@ -32,7 +32,7 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase {
 
         $actual = $this->yahtzee->score($dice);
 
-        $this->assertScoresYahtzee($actual);
+        $this->assertScore(50, $actual, 'yahtzee');
     }
 
     public function testScoreWithAllFoursScoresYahtzee(){
@@ -40,7 +40,7 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase {
 
         $actual = $this->yahtzee->score($dice);
 
-        $this->assertScoresYahtzee($actual);
+        $this->assertScore(50, $actual, 'yahtzee');
     }
 
     public function testScoreWithAllFivesScoresYahtzee(){
@@ -48,7 +48,7 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase {
 
         $actual = $this->yahtzee->score($dice);
 
-        $this->assertScoresYahtzee($actual);
+        $this->assertScore(50, $actual, 'yahtzee');
     }
 
     public function testScoreWithAllSixesScoresYahtzee(){
@@ -56,12 +56,35 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase {
 
         $actual = $this->yahtzee->score($dice);
 
-        $this->assertScoresYahtzee($actual);
+        $this->assertScore(50, $actual, 'yahtzee');
     }
 
-    private function assertScoresYahtzee($score){
-        $this->assertEquals(50, $score['yahtzee'] );
+    public function testScoreYahtzeeNoYahtzeeScoresZero(){
+        $dice = [6,4,2,1,5];
+        $actual = $this->yahtzee->score($dice);
 
+        $this->assertScore(0, $actual, 'yahtzee');
+    }
+
+    public function testScoreChanceAddsUpAllScores(){
+        $dice = [6,4,2,1,5];
+        $expected = 6+4+2+1+5;
+        $actual = $this->yahtzee->score($dice);
+
+        $this->assertScore($expected, $actual, 'chance');
+    }
+
+    public function testScoreChanceAddsUpAllScoresDifferentDice(){
+        $dice = [1,1,2,3,5];
+        $expected = array_sum($dice);
+        $actual = $this->yahtzee->score($dice);
+
+        $this->assertScore($expected, $actual, 'chance');
+    }
+
+
+    private function assertScore($expected, $score, $name){
+        $this->assertEquals($expected, $score[$name]);
     }
 }
  
