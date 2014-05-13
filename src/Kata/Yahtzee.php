@@ -2,18 +2,18 @@
 
 namespace Kata;
 
+use Kata\ScoringRules\ChanceRule;
+use Kata\ScoringRules\YahtzeeRule;
+
 class Yahtzee {
 
     public function score($dice){
-        $yahtzee = 0;
-        $chance = array_sum($dice);
-
-        if(count(array_unique($dice)) == 1){
-            $yahtzee = 50;
+        $rules = [new ChanceRule(), new YahtzeeRule()];
+        $score = [];
+        foreach($rules as $rule){
+            $score[$rule->getName()] = $rule->score($dice);
         }
 
-        $score = ['yahtzee'=>$yahtzee];
-        $score['chance'] = $chance;
         return $score;
     }
 } 
