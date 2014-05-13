@@ -21,6 +21,10 @@ abstract class NumbersRuleTest extends \PHPUnit_Framework_TestCase {
         $this->assertInstanceOf('Kata\ScoringRules\ScoringRule', $this->rule);
     }
 
+    public function testIsANumbersRule(){
+        $this->assertInstanceOf('Kata\ScoringRules\NumbersRule', $this->rule);
+    }
+
     public function testGetNameReturnsYahtzee(){
         $this->assertEquals($this->getScoreName(), $this->rule->getName());
     }
