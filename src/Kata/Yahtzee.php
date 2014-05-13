@@ -9,6 +9,7 @@ use Kata\ScoringRules\OnesRule;
 use Kata\ScoringRules\PairRule;
 use Kata\ScoringRules\SixesRule;
 use Kata\ScoringRules\ThreesRule;
+use Kata\ScoringRules\TwoPairRule;
 use Kata\ScoringRules\TwosRule;
 use Kata\ScoringRules\YahtzeeRule;
 
@@ -16,7 +17,7 @@ class Yahtzee {
 
     public function score($dice) {
         $rules = [new ChanceRule(), new YahtzeeRule(), new OnesRule(), new TwosRule(), new ThreesRule(), new FoursRule(),
-                  new FivesRule(), new SixesRule(), new PairRule()];
+                  new FivesRule(), new SixesRule(), new PairRule(), new TwoPairRule()];
         $score = [];
         foreach ($rules as $rule) {
             $score[$rule->getName()] = $rule->score($dice);
