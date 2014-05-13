@@ -181,6 +181,14 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase {
         $this->assertScore($expected, $actual, 'small-straight');
     }
 
+    public function testLargeStraight(){
+        $dice = [5,4,3,2,6];
+        $expected = 20;
+
+        $actual = $this->yahtzee->score($dice);
+
+        $this->assertScore($expected, $actual, 'large-straight');
+    }
 
     private function assertScore($expected, $score, $name){
         $this->assertEquals($expected, $score[$name]);
