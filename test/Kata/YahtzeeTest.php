@@ -91,6 +91,14 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase {
         $this->assertScore($expected, $actual, 'ones');
     }
 
+    public function testScoreTwosWithTwoTwos(){
+        $dice = [1,2,3,2,1];
+        $expected = 4;
+
+        $actual = $this->yahtzee->score($dice);
+
+        $this->assertScore($expected, $actual, 'twos');
+    }
     private function assertScore($expected, $score, $name){
         $this->assertEquals($expected, $score[$name]);
     }
