@@ -8,6 +8,9 @@ abstract class NumbersRuleTest extends \PHPUnit_Framework_TestCase {
     abstract function getRule();
 
     abstract function getScoreName();
+
+    abstract function getScoreValue();
+
     private $rule;
 
     public function setUp(){
@@ -23,8 +26,8 @@ abstract class NumbersRuleTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testScoreNoNumbersReturnsZero(){
-        $dice = [4,2,2,2,2];
-        $expected = 0;
+        $dice = $this->createDice(0);
+        $expected = 0 * $this->getScoreValue();
 
         $actual = $this->rule->score($dice);
 
@@ -32,8 +35,8 @@ abstract class NumbersRuleTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testScoreOneNumberReturnsSumOfNumbers(){
-        $dice = [1,2,2,2,2];
-        $expected = 1;
+        $dice = $this->createDice(1);
+        $expected = 1 * $this->getScoreValue();
 
         $actual = $this->rule->score($dice);
 
@@ -41,8 +44,8 @@ abstract class NumbersRuleTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testScoreTwoNumbersReturnsSumOfNumbers(){
-        $dice = [1,2,1,2,2];
-        $expected = 2;
+        $dice = $this->createDice(2);
+        $expected = 2 * $this->getScoreValue();
 
         $actual = $this->rule->score($dice);
 
@@ -50,8 +53,8 @@ abstract class NumbersRuleTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testScoreThreeNumbersReturnsSumOfNumbers(){
-        $dice = [1,2,1,2,1];
-        $expected = 3;
+        $dice = $this->createDice(3);
+        $expected = 3 * $this->getScoreValue();
 
         $actual = $this->rule->score($dice);
 
@@ -59,8 +62,8 @@ abstract class NumbersRuleTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testScoreFourNumbersReturnsSumOfNumbers(){
-        $dice = [1,2,1,1,1];
-        $expected = 4;
+        $dice = $this->createDice(4);
+        $expected = 4 * $this->getScoreValue();
 
         $actual = $this->rule->score($dice);
 
@@ -68,12 +71,20 @@ abstract class NumbersRuleTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testScoreAllNumbersReturnsSumOfNumbers(){
-        $dice = [1,1,1,1,1];
-        $expected = 5;
+        $dice = $this->createDice(5);
+        $expected = 5 * $this->getScoreValue();
 
         $actual = $this->rule->score($dice);
 
         $this->assertEquals($expected, $actual);
+    }
+
+    private function createDice($times){
+        $dice = [0,0,0,0,0];
+        for($i = 0; $i < $times; $i++){
+            $dice[$i] = $this->getScoreValue();
+        }
+        return $dice;
     }
 }
  

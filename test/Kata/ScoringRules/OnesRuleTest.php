@@ -12,5 +12,9 @@ class OnesRuleTest extends NumbersRuleTest{
     function getScoreName() {
         return "ones";
     }
+
+    function getScoreValue() {
+        return 1;
+    }
 }
  
