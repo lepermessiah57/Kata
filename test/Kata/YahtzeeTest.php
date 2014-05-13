@@ -136,6 +136,15 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase {
         $this->assertScore($expected, $actual, 'sixes');
     }
 
+    public function testScorePairsWithTwoSixes(){
+        $dice = [1,2,3,6,6];
+        $expected = 12;
+
+        $actual = $this->yahtzee->score($dice);
+
+        $this->assertScore($expected, $actual, 'pair');
+    }
+
     private function assertScore($expected, $score, $name){
         $this->assertEquals($expected, $score[$name]);
     }
