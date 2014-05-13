@@ -10,8 +10,8 @@ class PairRule implements ScoringRule{
         $values = array_count_values($dice);
         krsort($values);
         foreach($values as $k=>$v){
-            if($v > 1){
-                return $k * 2;
+            if($v > $this->getCount() - 1){
+                return $k * $this->getCount();
             }
         }
         return 0;
@@ -19,5 +19,9 @@ class PairRule implements ScoringRule{
 
     public function getName() {
         return "pair";
+    }
+
+    protected  function getCount(){
+        return 2;
     }
 }
