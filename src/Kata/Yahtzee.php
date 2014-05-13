@@ -15,7 +15,8 @@ use Kata\ScoringRules\YahtzeeRule;
 class Yahtzee {
 
     public function score($dice) {
-        $rules = [new ChanceRule(), new YahtzeeRule(), new OnesRule(), new TwosRule(), new ThreesRule(), new FoursRule(), new FivesRule(), new SixesRule(), new PairRule()];
+        $rules = [new ChanceRule(), new YahtzeeRule(), new OnesRule(), new TwosRule(), new ThreesRule(), new FoursRule(),
+                  new FivesRule(), new SixesRule(), new PairRule()];
         $score = [];
         foreach ($rules as $rule) {
             $score[$rule->getName()] = $rule->score($dice);
