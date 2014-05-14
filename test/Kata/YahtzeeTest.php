@@ -190,8 +190,39 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase {
         $this->assertScore($expected, $actual, 'large-straight');
     }
 
+    public function testFullHouse(){
+        $dice = [5,5,5,6,6];
+        $expected = 27;
+
+        $actual = $this->yahtzee->score($dice);
+
+        $this->assertScore($expected, $actual, 'full-house');
+    }
+
+    public function testAllScores(){
+        $dice = [1,1,1,1,1];
+
+        $actual = $this->yahtzee->score($dice);
+
+        $this->assertScore(50, $actual, 'yahtzee');
+        $this->assertScore(0, $actual, 'full-house');
+        $this->assertScore(0, $actual, 'large-straight');
+        $this->assertScore(0, $actual, 'small-straight');
+        $this->assertScore(4, $actual, 'four-of-a-kind');
+        $this->assertScore(3, $actual, 'three-of-a-kind');
+        $this->assertScore(0, $actual, 'two-pair');
+        $this->assertScore(2, $actual, 'pair');
+        $this->assertScore(0, $actual, 'sixes');
+        $this->assertScore(0, $actual, 'fives');
+        $this->assertScore(0, $actual, 'fours');
+        $this->assertScore(0, $actual, 'threes');
+        $this->assertScore(0, $actual, 'twos');
+        $this->assertScore(5, $actual, 'ones');
+        $this->assertScore(5, $actual, 'chance');
+    }
+
     private function assertScore($expected, $score, $name){
         $this->assertEquals($expected, $score[$name]);
     }
 }
- 
+
