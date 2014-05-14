@@ -5,6 +5,7 @@ namespace Kata;
 
 
 use Kata\ScoringRules\ChanceRule;
+use Kata\ScoringRules\YahtzeeRule;
 
 class Yahtzee {
 
@@ -12,8 +13,10 @@ class Yahtzee {
         $chance = new ChanceRule();
         $chance_score = $chance->score($dice);
 
-        $yahtzee = count(array_unique($dice)) == 1;
-        $yahtzee_score = $yahtzee ? 50 : 0;
+        $yahtzee = new YahtzeeRule();
+        $yahtzee_score = $yahtzee->score($dice);
+
+
         $possible_dice = [1=>0, 2=>0, 3=>0, 4=>0, 5=>0, 6=>0];
         foreach($dice as $die){
             $possible_dice[$die]++;
@@ -27,7 +30,7 @@ class Yahtzee {
 
         $possible_scores = array(
             $chance->getScoreName()  => $chance_score,
-            'yahtzee' => $yahtzee_score,
+            $yahtzee->getScoreName() => $yahtzee_score,
             'pair'    => $pair_score
         );
 
