@@ -4,7 +4,7 @@
 namespace Kata\ScoringRules;
 
 
-class ChanceRule {
+class ChanceRule implements ScoringRule {
 
     public function score($dice){
         $score = array_sum( $dice );

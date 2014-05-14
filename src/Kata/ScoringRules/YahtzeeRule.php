@@ -4,7 +4,7 @@
 namespace Kata\ScoringRules;
 
 
-class YahtzeeRule {
+class YahtzeeRule implements ScoringRule{
 
     public function getScoreName(){
         return 'yahtzee';

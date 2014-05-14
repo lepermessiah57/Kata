@@ -5,6 +5,12 @@ namespace Kata\ScoringRules;
 
 class ChanceRuleTest extends \PHPUnit_Framework_TestCase {
 
+    public function testIsAScoringRule(){
+        $rule = new ChanceRule();
+
+        $this->assertInstanceOf('Kata\ScoringRules\ScoringRule', $rule);
+    }
+
     public function testGetScoreNameReturnsUsChance(){
         $expected = 'chance';
         $rule = new ChanceRule();

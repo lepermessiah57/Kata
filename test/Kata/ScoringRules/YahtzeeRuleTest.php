@@ -5,6 +5,12 @@ namespace Kata\ScoringRules;
 
 class YahtzeeRuleTest extends \PHPUnit_Framework_TestCase {
 
+    public function testIsAScoringRule(){
+        $rule = new YahtzeeRule();
+
+        $this->assertInstanceOf('Kata\ScoringRules\ScoringRule', $rule);
+    }
+
     public function testGetScoreNameReturnsUsYahtzee(){
         $expected = 'yahtzee';
         $rule = new YahtzeeRule();
