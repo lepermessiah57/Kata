@@ -7,16 +7,10 @@ namespace Kata\ScoringRules;
 class LargeStraightRule implements ScoringRule{
 
     public function score($dice) {
-        $straight = true;
         sort($dice);
-        for($i = 0; $i < 5; $i++){
-            if($i+2 != $dice[$i]){
-                $straight = false;
-                break;
-            }
-        }
+        $expected = range(2,6);
 
-        return $straight ? 20 : 0;
+        return $expected == $dice ? 20 : 0;
     }
 
     public function getName() {
